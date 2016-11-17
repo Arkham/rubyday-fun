@@ -24,14 +24,13 @@ defmodule Rubyday.RoomChannel do
   end
 
   def handle_in("new:vote", vote, socket) do
-    choice = vote["choice"]
-    vote(choice)
+    do_vote(vote)
     broadcast! socket, "updated:count", get_vote_counts()
-    {:reply, {:ok, %{choice: choice}}, socket}
+    {:reply, {:ok, %{vote: vote}}, socket}
   end
 
-  defp vote(choice) do
-    VoteMap.vote(choice, "u-#{:rand.uniform(10_000)}")
+  defp do_vote(vote) do
+    VoteMap.vote(vote["choice"], vote["user_id"])
   end
 
   defp get_vote_counts do

@@ -53,22 +53,11 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 
 socket.connect()
 
-// Now that you are connected, you can join channels with a topic:
 let channel = socket.channel("rooms:lobby", {})
+
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
-
-var $voteOptions = $(".vote-option")
-
-$voteOptions.each((_index, option) => {
-  let $button = $(option).find(".vote-button")
-  let value = $button.data("value")
-
-  $button.click(e => {
-    channel.push("new:vote", {choice: value})
-  })
-})
 
 channel.on("updated:count", votes => {
   for (let key in votes) {
@@ -76,6 +65,20 @@ channel.on("updated:count", votes => {
     let $span = $(`.vote-option.${key} .value`)
     $span.html(value)
   }
+})
+
+var $voteButtons = $(".vote-button")
+
+$voteButtons.each((_index, button) => {
+  let $button = $(button)
+  let value = $button.data("value")
+
+  $button.click(e => {
+    new Fingerprint2().get((userId) => {
+      channel.push("new:vote", {choice: value, user_id: userId})
+      $voteButtons.hide()
+    })
+  })
 })
 
 export default socket

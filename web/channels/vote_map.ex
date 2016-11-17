@@ -4,7 +4,10 @@ defmodule Rubyday.VoteMap do
   end
 
   def vote(choice, user_id) do
-    :ets.insert(__MODULE__, {choice, user_id})
+    case :ets.match(__MODULE__, {:"$1", user_id}) do
+      [] -> :ets.insert(__MODULE__, {choice, user_id})
+      _match -> true
+    end
   end
 
   def count(choice) do
