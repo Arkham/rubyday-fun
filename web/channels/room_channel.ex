@@ -13,8 +13,6 @@ defmodule Rubyday.RoomChannel do
   end
 
   def handle_info({:after_join, _msg}, socket) do
-    broadcast! socket, "user:entered", %{foo: "bar"}
-    push socket, "join", %{status: "connected"}
     push socket, "updated:count", get_vote_counts()
     {:noreply, socket}
   end
