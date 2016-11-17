@@ -15,3 +15,5 @@
     <button class="vote-button" data-value="elixir">Vote</button>
   </div>
 </section>
+
+<span class="user_ip" data-value="<%= :inet_parse.ntoa(@conn.remote_ip) %>"></span>

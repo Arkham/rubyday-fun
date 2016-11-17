@@ -67,7 +67,8 @@ channel.on("updated:count", votes => {
   }
 })
 
-var $voteButtons = $(".vote-button")
+let $voteButtons = $(".vote-button")
+let userIp = $(".user_ip").data("value")
 
 $voteButtons.each((_index, button) => {
   let $button = $(button)
@@ -75,7 +76,7 @@ $voteButtons.each((_index, button) => {
 
   $button.click(e => {
     new Fingerprint2().get((userId) => {
-      channel.push("new:vote", {choice: value, user_id: userId})
+      channel.push("new:vote", {choice: value, user_id: `${userIp}-${userId}`})
       $voteButtons.hide()
     })
   })
