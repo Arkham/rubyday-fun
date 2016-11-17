@@ -1,0 +1,17 @@
+<section class="hero">
+  <h1>Let the vote begin!</h1>
+</section>
+
+<section class="vote">
+  <div class="vote-option ruby">
+    <div class="logo"></div>
+    <div class="value">0</div>
+    <button class="vote-button" data-value="ruby">Vote</button>
+  </div>
+
+  <div class="vote-option elixir">
+    <div class="logo"></div>
+    <div class="value">0</div>
+    <button class="vote-button" data-value="elixir">Vote</button>
+  </div>
+</section>

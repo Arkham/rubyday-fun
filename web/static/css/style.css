@@ -1,0 +1,103 @@
+* {
+  font-family: Quicksand, Montserrat, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif !important;
+  font-weight: bold;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  background-color: #5d4ca0;
+  padding-top: 10rem;
+}
+
+.hero,
+.vote,
+.vote-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero h1 {
+  color: white;
+  font-size: 4rem;
+  text-transform: uppercase;
+}
+
+.vote-option {
+  background-color: white;
+  border-radius: 1rem;
+  margin: 1rem;
+  padding: 1.5rem;
+}
+
+.vote-option .logo {
+  background-size: 100px 100px;
+  height: 100px;
+  width: 100px;
+}
+
+.vote-option.elixir .logo {
+  background-image: url("/images/elixir.png");
+}
+
+.vote-option.ruby .logo {
+  background-image: url("/images/ruby.png");
+}
+
+.vote-option .value {
+  font-size: 3rem;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  width: 5rem;
+}
+
+.vote-button {
+  color: white;
+  background-color: #ef4b6a;
+  border-radius: 1.5rem;
+  border-width: 0;
+  box-shadow: 0 0.5rem 0 #4b3895;
+  font-size: 2rem;
+  padding: 1.5rem 2rem;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.vote-button:hover {
+  background-color: #d5405a;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 960px) {
+  body {
+    padding-top: 5rem;
+  }
+
+  .hero h1 {
+    color: white;
+    font-size: 2rem;
+  }
+
+  .vote {
+    flex-direction: column;
+  }
+
+  .vote-option .value {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  html {
+    font-size: 12px;
+  }
+
+  .vote-option .logo {
+    background-size: 60px 60px;
+    height: 60px;
+    width: 60px;
+  }
+}
